@@ -26,6 +26,8 @@ Branch-creation config:
 
 ## Instructions
 
+**Idioma:** responde siempre en español, incluidos los mensajes para el usuario, los resúmenes y las preguntas. Los identificadores de código, nombres de ramas, comandos git y los valores de estado reconocidos (`Approved`, `Aprobado`, etc.) se mantienen tal cual.
+
 Follow these four phases in strict order. **Do not advance to the next phase if the previous one did not complete correctly.**
 
 ---
@@ -82,17 +84,17 @@ If you are unsure whether a value means "approved", **do not assume**. Stop and 
 **Standard error message when the state does not mean Approved:**
 
 ```
-❌ I cannot implement this spec.
+❌ No puedo implementar esta spec.
 
-Current state: [STATE FOUND]
-I only work with specs whose state means "Approved" (e.g. `Approved`, `Aprobado`,
-or the equivalent in another language).
+Estado actual: [ESTADO ENCONTRADO]
+Solo trabajo con specs cuyo estado signifique "Aprobado" (p. ej. `Aprobado`,
+`Approved` o el equivalente en otro idioma).
 
-To continue you have two options:
-  1. If the spec is ready to be implemented, open it and change the state
-     to "Approved" (or the equivalent term your team uses) manually.
-     That change is made by the human, not the agent.
-  2. If the spec still needs work, use /spec [name] to resume it.
+Para continuar tienes dos opciones:
+  1. Si la spec está lista para implementarse, ábrela y cambia el estado
+     a "Aprobado" (o el término equivalente de tu equipo) manualmente.
+     Ese cambio lo hace una persona, no el agente.
+  2. Si la spec aún necesita trabajo, usa /spec [nombre] para retomarla.
 ```
 
 Do not offer alternatives, do not suggest "I can still start if you want". The block is intentional.
@@ -106,10 +108,10 @@ Once you have confirmed the state means `Approved`:
 0. **Check the working tree first.** Look at the `git status --short` output in the session context above. If it is **not empty**, stop and show the pending changes, then ask:
 
    ```
-   ⚠️ There are uncommitted changes in the working tree.
-   Switching branches would carry them over. What do you want to do?
-     1. Commit or stash them yourself, then re-run this command  (recommended)
-     2. Continue anyway — the changes travel to the new branch
+   ⚠️ Hay cambios sin confirmar en el árbol de trabajo.
+   Cambiar de rama los arrastraría. ¿Qué quieres hacer?
+     1. Confirmarlos o guardarlos tú mismo (stash) y volver a ejecutar el comando  (recomendado)
+     2. Continuar igualmente: los cambios viajan a la nueva rama
    ```
 
    Wait for the answer. **Do not stash or commit on the user's behalf** unless they explicitly ask for it. If the working tree is clean, skip straight to step 1 without mentioning it.
@@ -143,11 +145,11 @@ Once you have confirmed the state means `Approved`:
 3. Visually confirm to the user the spec is ready and which branch is active:
 
    ```
-   ✅ Ready to implement.
+   ✅ Lista para implementar.
 
    Spec:   specs/NN-slug.md
-   Branch: spec-NN-slug  (active)   (← or the current branch, if no new branch was created)
-   State:  Approved   (← echo back the actual value found in the spec)
+   Rama:   spec-NN-slug  (activa)   (← o la rama actual, si no se creó ninguna nueva)
+   Estado: Aprobado   (← muestra el valor real encontrado en la spec)
    ```
 
 4. **Do not start implementing yet.** First show the spec summary to the user so they have it fresh. Extract and show:
@@ -165,13 +167,13 @@ Match section headings by meaning, not by exact wording — the spec may be auth
 After showing the spec summary, tell the user:
 
 ```
-I am going to implement the spec following the implementation plan exactly.
-I will pause after each step so you can review the diff.
+Voy a implementar la spec siguiendo el plan de implementación al pie de la letra.
+Me detendré después de cada paso para que revises el diff.
 
-Shall we start with Step 1?
+¿Empezamos con el Paso 1?
 ```
 
-Wait for explicit confirmation ("yes", "go ahead", "go", or equivalent). Do not start without it.
+Wait for explicit confirmation ("sí", "adelante", "vale", "yes", "go", or equivalent). Do not start without it.
 
 Once confirmed, follow these rules during the entire implementation:
 
@@ -183,7 +185,7 @@ Once confirmed, follow these rules during the entire implementation:
 
 - Implement one step of the plan.
 - Show a summary of which files you touched and what you did.
-- Say: `Step N completed. Could you review the diff and let me know if I continue with Step N+1?`
+- Di: `Paso N completado. ¿Puedes revisar el diff y decirme si continúo con el Paso N+1?`
 - Wait for confirmation before continuing.
 
 **If during the implementation you find an ambiguity** the spec does not resolve:
@@ -203,11 +205,11 @@ Once confirmed, follow these rules during the entire implementation:
 **When finishing the last step:**
 
 ```
-✅ All steps of the plan are implemented.
+✅ Todos los pasos del plan están implementados.
 
-Next step: verify the spec's acceptance criteria one by one.
-If they all pass, update the spec's state to "Implemented" (or the equivalent
-in your repo's language) and make the final commit before merging this branch.
+Siguiente paso: verifica los criterios de aceptación uno a uno.
+Si todos se cumplen, cambia el estado de la spec a "Implementado" (o el equivalente
+en el idioma del repo) y haz el commit final antes de fusionar esta rama.
 ```
 
 ---
