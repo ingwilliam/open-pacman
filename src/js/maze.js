@@ -4,6 +4,7 @@
 //   '#' pared(1) · '.' dot(2) · ' ' vacio transitable(0) · '-' puerta pen(3)
 // Coordenadas: celda (x,y), origen arriba-izquierda. x in [0,27], y in [0,30].
 // Simetrico respecto al eje vertical central (entre cols 13 y 14).
+// GHOST_STARTS define los 4 fantasmas (kind y casilla inicial dentro de la pen).
 
 const MAZE_STR = [
   '############################', // 0  borde
@@ -52,8 +53,10 @@ const MAZE = MAZE_STR.map( ( row ) => row.split( '' ).map( parseTile ) );
 const TUNNEL_ROW = 14;
 const PACMAN_START = { x: 13, y: 23 };
 const GHOST_STARTS = [
-  { x: 13, y: 14, kind: 'hunter' }, // dentro de la pen
-  { x: 14, y: 14, kind: 'random' }, // dentro de la pen
+  { x: 13, y: 14, kind: 'hunter' },   // persecutor (rojo)
+  { x: 14, y: 14, kind: 'ambusher' }, // emboscada (cian)
+  { x: 12, y: 14, kind: 'random' },   // aleatorio (rosa)
+  { x: 15, y: 14, kind: 'shy' },      // timido (naranja)
 ];
 
 window.MAZE = MAZE;

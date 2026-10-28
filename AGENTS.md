@@ -27,7 +27,7 @@ Juego de Pac-Man en JavaScript vanilla (HTML + CSS + JS). No hay build, paquetes
 - Canvas 560x620 = 28x31 celdas de `TILE = 20` píxeles (`render.js`). Si cambias el tamaño del laberinto, cambia también el canvas y `TILE`.
 - `TUNNEL_ROW = 14` es la única fila donde existe el túnel: salir por un borde la reenvía al otro lado (`wrapTunnel`).
 - Pac-Man y los fantasmas se mueven en coordenadas fraccionarias y solo cambian de dirección al estar alineados con una celda (`aligned`). `nextDir` guarda el giro pedido hasta que sea posible.
-- Los fantasmas tienen `kind` `'hunter'` (persigue por distancia Manhattan) o `'random'`.
+- Los fantasmas tienen `kind` `'hunter'` (persigue a Pac-Man por BFS), `'ambusher'` (apunta a la casilla delante de Pac-Man), `'random'` o `'shy'` (persigue si está lejos, si no se retira a una esquina). Cada fantasma tiene `phase` `'waiting'` (espera en la pen según `GHOST_RELEASE_TICKS`), `'leaving'` (sale por `PEN_EXIT`) o `'active'`.
 - Los puntos se cuentan en `createGame()`; la victoria ocurre cuando `dotsRemaining` llega a 0 (`update`).
 - Tras una colisión se restan vidas y se reinician posiciones (`resetPositions`); en 0 vidas el estado pasa a `'lost'`.
 
